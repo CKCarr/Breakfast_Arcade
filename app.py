@@ -5,6 +5,7 @@ from flask import jsonify
 from flask_cors import CORS
 
 app = Flask(__name__)
+
 CORS(app)  # Enable CORS for all routes
 
 app.register_blueprint(arcade_blueprint, url_prefix='/arcade')

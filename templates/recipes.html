@@ -14,17 +14,19 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
     <!-- End Bootstrap 4 CDN -->
+    <!-- scripts for index.js -->
+    <script src="{{ url_for('static', filename='scripts/index.js') }}"></script>
 
     <!-- Custom CSS -->
     <!-- links to static/styles/css -->
-    <link rel="stylesheet" type="text/css" href="static/styles/header.css" />
-    <link rel="stylesheet" type="text/css" href="static/styles/common.css" />
-    <link rel="stylesheet" type="text/css" href="static/styles/index.css" />
+    <link rel="stylesheet" type="text/css" href="/static/styles/header.css" />
+    <link rel="stylesheet" type="text/css" href="/static/styles/common.css" />
+    <link rel="stylesheet" type="text/css" href="/static/styles/index.css" />
 
     <!-- Include jQuery library (required for AJAX) -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <!-- Include your JavaScript file -->
-    <script src="static/scripts/index.js"></script>
+    <script src="/static/scripts/index.js"></script>
 
     <style>
       .fakeimg {
@@ -91,18 +93,22 @@
     <body>
       <!-- Recipe Section -->
       <section id="recipes-list">
-        <!-- TODO: Add recipe selection buttons here -->
         <h1>Breakfast Recipes</h1>
         <ul>
           {% for recipe in recipes %}
-          <li><a href="{{ recipe.uri }}">{{ recipe.label }}</a></li>
+          <li>
+            <img
+              src="{{ recipe.recipe.image }}"
+              alt="{{ recipe.recipe.label }} Image"
+            />
+            <a href="{{ recipe.recipe.url }}">{{ recipe.recipe.label }}</a>
+          </li>
           {% endfor %}
         </ul>
       </section>
     </body>
 
     <footer>
-      <p>Footer</p>
       <div class="jumbotron text-center" style="margin-bottom: 0">
         <p>Holberton-School Hacksprint C20</p>
         <p>Breakfast For Fun 2023</p>

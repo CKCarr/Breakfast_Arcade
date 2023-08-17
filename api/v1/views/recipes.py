@@ -1,12 +1,13 @@
 import os
-from flask import Blueprint, Flask, render_template, app, json
+from flask import Flask, render_template, json, Blueprint
 import requests
-
 
 APP_ID = os.environ.get('EDAMAM_APP_ID')
 APP_KEY = os.environ.get('EDAMAM_APP_KEY')
 
 recipes_blueprint = Blueprint('recipes', __name__)
+
+app = Flask(__name__)
 
 @recipes_blueprint.route('/recipes')
 def get_recipes():
@@ -14,15 +15,18 @@ def get_recipes():
     params = {
         "app_id": APP_ID,
         "app_key": APP_KEY,
-        "type": "user",
+        "type": "public",
         "q": "breakfast",
-        "field": ["uri", "label"]
+        "mealType": "Breakfast",
+        "field": ["uri", "label", "image", "source", "url", "shareAs"
+                  "yield", "dietLabels", "healthLabels", "cautions",
+                  "ingredientLines", "ingredients", "calories", "totalWeight",
+                  "totalTime", "totalNutrients", "totalDaily", "digest"]
     }
 
     response = requests.get(base_url, params=params)
     data = response.json()
 
-    # Assuming the recipes are stored in the "hits" key based on Edamam's documentation
     recipes = data.get('hits', [])
 
     return render_template('recipes.html', recipes=recipes)

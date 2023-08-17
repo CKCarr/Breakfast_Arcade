@@ -14,13 +14,15 @@ $(document).ready(function() {
 
 $(document).ready(function() {
     // Target the element where you want to display the recipes
-    var recipesList = $('#recipes-list');
+    let recipesList = $('#recipes-list');
 
     // AJAX request
     $.ajax({
         url: '/recipes', // URL of the Flask route that fetches the API data
         method: 'GET',
         success: function(data) {
+            console.log(data);
+
             // Assuming data is a list of recipe objects
             data.forEach(function(recipe) {
                 recipesList.append('<li><a href="' + recipe.uri + '">' + recipe.label + '</a></li>');
