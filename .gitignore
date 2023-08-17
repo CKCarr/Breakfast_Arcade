@@ -1,0 +1,9 @@
+secrets/
+config/secret-config.json
+docker-compose.yml
+docker-compose.*.yml
+Dockerfile.*
+.dockerignore
+.docker/
+.env
+/breakfast_venv
