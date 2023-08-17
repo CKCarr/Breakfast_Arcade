@@ -1,0 +1,85 @@
+/*
+header {
+    width: 100%;
+    background-color: rgb(255, 251, 134);
+    height: 180px;
+    border-bottom: 4px solid #ffa200;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+}
+ */
+
+
+/* 
+
+header {
+    margin-top: 20px;
+    width: 100%;
+    background-color: rgb(255, 251, 134);
+    height: 240px;
+    border-bottom: 4px solid #ffa200;
+    display: flex;
+    flex-direction: row;
+    align-items: center; 
+    justify-content: space-between;
+    padding: 20px 0px;
+}
+*/
+
+/* Apply margin to the header to create spacing from the top */
+header {
+    margin-top: 0px; /* Adjust the margin value as needed */
+    width: 100%;
+    background-color: rgb(237, 236, 154);
+    height: 240px;
+    border-bottom: 4px solid #ffa200;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 20px;
+}
+
+.header-margin {
+    height: 20px; /* Adjust the height of the margin */
+    background-color: rgb(251, 215, 15); /* Same as header background color */
+  }
+
+
+
+
+header .logo {
+    width: 200px;
+    height: 50px;
+    margin-left: 20px;
+}
+
+header #nav_bar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-left: auto;
+    margin-right: 20px;
+    background-color: rgb(235, 217, 80);
+}
+
+header #api_status {
+    position: absolute;
+    top: 50px;
+    right: 30px;
+    width: 55px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: #f8dcad;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#api_status.available {
+
+    background-color: #ffffff;
+
+}
