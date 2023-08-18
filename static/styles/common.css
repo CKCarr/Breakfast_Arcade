@@ -13,3 +13,24 @@ body {
     margin-left: auto;
     margin-right: auto;
 }
+
+.arcade_img {
+    width: 120px; /* Adjust the width as needed */
+    height: auto; /* Maintain the aspect ratio */
+  }
+
+/* styles.css or inline style */
+.recipe-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Two columns with equal width */
+    gap: 20px; /* Gap between items */
+}
+
+.recipe-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 10px;
+    border: 1px solid #ccc;
+}

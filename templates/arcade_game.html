@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-  <!-- Head -->
   <head>
     <title>Breakfast For Fun</title>
     <meta charset="utf-8" />
@@ -15,77 +14,119 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
     <!-- End Bootstrap 4 CDN -->
 
-    <!-- Custom CSS -->
+    <!-- scripts for index.js -->
+    <script src="{{ url_for('static', filename='scripts/index.js') }}"></script>
+
     <!-- links to static/styles/css -->
     <link rel="stylesheet" type="text/css" href="static/styles/header.css" />
     <link rel="stylesheet" type="text/css" href="static/styles/common.css" />
     <link rel="stylesheet" type="text/css" href="static/styles/index.css" />
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+    <script src="{{ url_for('static', filename='sketch.js') }}"></script>
+    <!-- Custom CSS -->
     <style>
       .fakeimg {
         height: 200px;
         background: #aaa;
       }
     </style>
-
     <!-- End Custom CSS -->
   </head>
-  <!-- End Head-->
 
-  <!-- Body -->
   <body>
-    <!-- incorporate status of api in header -->
     <div class="header-margin"></div>
     <!-- Header Section -->
     <header>
       <h1>Welcome to the Breakfast Adventure!</h1>
       <div class="logo"></div>
+      <!-- Emojis for fun -->
       <span style="font-size: 130px">&#x1F95E; </span>
       <!-- Pancake emoji -->
       <span style="font-size: 130px">&#x1F373;</span>
       <!-- Fried egg emoji -->
       <span style="font-size: 130px">&#129363;</span>
       <!-- Bacon emoji -->
+
+      <!-- incorporate status of api in header -->
       <div id="api_status" class="available"></div>
     </header>
     <!-- End Header -->
+
+    <!-- Jumbotron Section -->
+    <div class="jumbotron text-center" style="margin-bottom: 0">
+      <!-- Jumbotron content here -->
+      <h1>Breakfast Bites && Bytes</h1>
+      <p><b> Breakfast Recipes && Arcade Breaks </b></p>
+    </div>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+      <a class="navbar-brand" href="#">Navbar</a>
+
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#collapsibleNavbar"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('recipes.get_recipes') }}"
+              >Breakfast Recipes</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('arcade') }}"
+              >Breakfast Arcade</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('contacts') }}">Contacts</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <!-- End Navigation Bar -->
+
+    <!-- p5.js Canvas -->
+    <div id="game-container">
+      <!-- This is where your p5.js canvas will be created -->
+      <script>
+        function setup() {
+          createCanvas(400, 400);
+          background(220);
+        }
+
+        function draw() {
+          ellipse(mouseX, mouseY, 50, 50);
+        }
+      </script>
+    </div>
+
+    <!-- Game Section -->
+    <section id="games">
+      <!-- Game section content here -->
+      <h2>Choose Your Game</h2>
+      <div id="game-container">
+        <!-- This is where your p5.js canvas will be created -->
+      </div>
+      <!-- TODO: Add game selection buttons here -->
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+      <!-- Footer content here -->
+      <div class="jumbotron text-center" style="margin-bottom: 0">
+        <p>Holberton-School Hacksprint C20</p>
+        <p>Breakfast For Fun 2023</p>
+        <p>&copy; 2023 My Breakfast Website. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <!-- Custom scripts (if needed) -->
   </body>
 </html>
-<div class="jumbotron text-center" style="margin-bottom: 0">
-  <h1>Breakfast Bites && Bytes</h1>
-  <p><b> Breakfast Recipes && Arcade Breaks </b></p>
-</div>
-<!-- Navigation Bar -->
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-  <a class="navbar-brand" href="#">Navbar</a>
-
-  <button
-    class="navbar-toggler"
-    type="button"
-    data-toggle="collapse"
-    data-target="#collapsibleNavbar"
-  >
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <div class="collapse navbar-collapse" id="collapsibleNavbar">
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" id="recipes" href="#">Recipes</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" id="arcade" href="#">Breakfast Arcade</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" id="contacts" href="#">Contacts</a>
-      </li>
-    </ul>
-  </div>
-</nav>
-<!-- End Navigation Bar -->
-
-<!-- Game Section -->
-<section id="games">
-  <h2>Choose Your Game</h2>
-  <!-- TODO: Add game selection buttons here -->
-</section>

@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-  <!-- Head -->
   <head>
     <title>Breakfast For Fun</title>
     <meta charset="utf-8" />
@@ -37,14 +36,12 @@
 
     <!-- End Custom CSS -->
   </head>
-  <!-- End Head-->
 
-  <!-- Body -->
   <body>
-    <!-- incorporate status of api in header -->
-    <div class="header-margin"></div>
     <!-- Header Section -->
+    <div class="header-margin"></div>
     <header>
+      <!-- Header content here -->
       <h1>Welcome to the Breakfast Adventure!</h1>
       <div class="logo"></div>
       <span style="font-size: 130px">&#x1F95E; </span>
@@ -55,7 +52,6 @@
       <!-- Bacon emoji -->
       <div id="api_status" class="available"></div>
     </header>
-    <!-- End Header -->
 
     <div class="jumbotron text-center" style="margin-bottom: 0">
       <h1>Breakfast Bites && Bytes</h1>
@@ -63,7 +59,7 @@
     </div>
     <!-- Navigation Bar -->
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-      <a class="navbar-brand" href="#">NAVBAR</a>
+      <a class="navbar-brand" href="{{ url_for('home') }}">HOME</a>
 
       <button
         class="navbar-toggler"
@@ -73,41 +69,42 @@
       >
         <span class="navbar-toggler-icon"></span>
       </button>
-
       <div class="collapse navbar-collapse" id="collapsibleNavbar">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link" id="recipes" href="#">Recipes</a>
+            <a class="nav-link" href="{{ url_for('recipes.get_recipes') }}"
+              >Breakfast Recipes</a
+            >
           </li>
           <li class="nav-item">
-            <a class="nav-link" id="arcade" href="#">Breakfast Arcade</a>
+            <a class="nav-link" href="{{ url_for('arcade') }}"
+              >Breakfast Arcade</a
+            >
           </li>
           <li class="nav-item">
-            <a class="nav-link" id="contacts" href="#">Contacts</a>
+            <a class="nav-link" href="{{ url_for('contacts') }}">Contacts</a>
           </li>
         </ul>
       </div>
     </nav>
-    <!-- End Navigation Bar -->
 
-    <body>
-      <!-- Recipe Section -->
-      <section id="recipes-list">
-        <h1>Breakfast Recipes</h1>
-        <ul>
-          {% for recipe in recipes %}
-          <li>
-            <img
-              src="{{ recipe.recipe.image }}"
-              alt="{{ recipe.recipe.label }} Image"
-            />
-            <a href="{{ recipe.recipe.url }}">{{ recipe.recipe.label }}</a>
-          </li>
-          {% endfor %}
-        </ul>
-      </section>
-    </body>
+    <!-- Recipe Section -->
+    <section id="recipes-list">
+      <h1>Breakfast Recipes</h1>
+      <div class="recipe-grid">
+        {% for recipe in recipes %}
+        <div class="recipe-item">
+          <img
+            src="{{ recipe.recipe.image }}"
+            alt="{{ recipe.recipe.label }} Image"
+          />
+          <a href="{{ recipe.recipe.url }}">{{ recipe.recipe.label }}</a>
+        </div>
+        {% endfor %}
+      </div>
+    </section>
 
+    <!-- Footer Section -->
     <footer>
       <div class="jumbotron text-center" style="margin-bottom: 0">
         <p>Holberton-School Hacksprint C20</p>

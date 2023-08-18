@@ -11,14 +11,28 @@ CORS(app)  # Enable CORS for all routes
 app.register_blueprint(arcade_blueprint, url_prefix='/arcade')
 app.register_blueprint(recipes_blueprint, url_prefix='/recipes')
 
-@app.route('/')
-def main_page():
-    return render_template('breakfast_arcade.html')
+
 
 @app.route('/api/v1/status/', methods=['GET'])
 def get_status():
     # Your status logic here
     return jsonify({'status': 'OK'})
+
+@app.route('/')
+def home():
+    return render_template('breakfast_arcade.html')
+
+@app.route('/contacts')
+def contacts():
+    return render_template('contacts.html')
+
+@app.route('/arcade')
+def arcade():
+    return render_template('arcade_game.html')
+
+@app.route('/recipes')
+def recipes():
+    return render_template('recipes.html')
 
 
 if __name__ == '__main__':

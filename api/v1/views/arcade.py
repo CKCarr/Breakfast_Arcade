@@ -1,5 +1,5 @@
 # arcade.py
-from flask import Blueprint, Flask, render_template, json
+from flask import Blueprint, Flask, render_template, json, send_from_directory
 
 arcade_blueprint = Blueprint('arcade', __name__)
 
@@ -7,8 +7,7 @@ app = Flask(__name__)
 
 @arcade_blueprint.route('/game')
 def get_game():
-    pass
-
+    return send_from_directory('static', 'p5game.html')
 
 
 if __name__ == '__main__':
