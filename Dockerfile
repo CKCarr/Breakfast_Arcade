@@ -4,14 +4,16 @@ FROM python:3.10
 # Set the working directory in the container
 WORKDIR /app
 
-# Copy the requirements file into the container
-COPY requirements.txt .
+# Copy only the required files into the container
+COPY . /app
+COPY app.py requirements.txt /app/
+COPY api /app/api/
+COPY static /app/static/
+COPY templates /app/templates/
 
 # Install the required dependencies
-RUN pip install -r requirements.txt
-
-# Copy the rest of your project into the container
-COPY . .
+RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install python-dotenv  # Install python-dotenv package
 
 # Expose the port that your Flask app will listen on
 EXPOSE 5000

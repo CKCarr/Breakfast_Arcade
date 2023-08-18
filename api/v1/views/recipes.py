@@ -9,7 +9,7 @@ recipes_blueprint = Blueprint('recipes', __name__)
 
 app = Flask(__name__)
 
-@recipes_blueprint.route('/recipes')
+@recipes_blueprint.route('/recipes', strict_slashes=False)
 def get_recipes():
     base_url = "https://api.edamam.com/api/recipes/v2"
     params = {
