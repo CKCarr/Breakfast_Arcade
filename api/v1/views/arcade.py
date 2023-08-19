@@ -7,7 +7,7 @@ app = Flask(__name__)
 
 @arcade_blueprint.route('/game', strict_slashes=False)
 def get_game():
-    return send_from_directory('static', 'p5game.html')
+   return render_template('p5game.html')
 
 
 if __name__ == '__main__':

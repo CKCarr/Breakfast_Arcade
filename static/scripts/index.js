@@ -30,3 +30,15 @@ $(document).ready(function() {
         }
     });
 });
+
+document.addEventListener("DOMContentLoaded", function() {
+    let startButton = document.getElementById("startButton");
+    startButton.addEventListener("click", startGame);
+});
+
+function startGame() {
+    gameState = "running";
+    document.getElementById("startButton").style.display = "none";  // Hide the start button
+    loop();  // Start the p5.js draw loop
+}
+

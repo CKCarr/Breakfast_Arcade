@@ -1,9 +1,15 @@
 body {
+    display: flex;
+    flex-direction: column;
     margin: 0;
     padding: 0;
     color: #484848;
     font-size: 14px;
     font-family: Circular,"Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+.main-content {
+    flex: 1;
 }
 
 .container {
@@ -33,4 +39,88 @@ body {
     text-align: center;
     padding: 10px;
     border: 1px solid #ccc;
+}
+
+
+.navbar-dark .navbar-nav .nav-link:hover {
+    color: orange;
+}
+
+
+
+
+.container {
+    width: 100%;
+}
+
+.contact1 {
+    float: left;
+    width: 50%;
+}
+
+.contact2 {
+    float: left;
+    width: 50%;
+}
+
+
+.arcade-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 110vh;
+    width: 100vw;
+}
+
+.arcade-demo {
+    text-align: center;
+}
+
+.canvas-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+}
+
+.game-container {
+    display: flex;
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.game-screen {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    position: relative;
+    object-fit: cover;
+    z-index: 1; /* Lower z-index to keep it behind the iframe */
+}
+
+.iframe-container {
+    color: #fff;
+    display: flex;
+    position: absolute;
+    top: 38%; 
+    left: 50%; 
+    width: 510px;
+    height: 520px;
+    transform: translate(-50%, -50%); /* Use transform for centering */
+    overflow: hidden;
+    z-index: 2;
+}
+
+.iframe-container iframe {
+    width: 100%;
+    height: 100%;
+    border: black 1px solid;
+}
+
+.game-iframe {
+    display: flex;
+    position: absolute;
+    width: 110%;
+    height: 110%;
+    border: none;
 }

@@ -30,7 +30,7 @@ def get_status():
 
 @app.route('/', strict_slashes=False)
 def home():
-    return render_template('breakfast_arcade.html')
+    return render_template('home.html')
 
 @app.route('/contacts', strict_slashes=False)
 def contacts():

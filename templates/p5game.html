@@ -4,17 +4,230 @@
     <meta charset="UTF-8" />
     <title>p5.js Game</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+    <script src="{{ url_for('static', filename='scripts/index.js') }}"></script>
   </head>
   <body>
+    <!-- links to static/images -->
+    <!-- Here's your start button -->
+    <img
+      id="startButton"
+      style="
+        cursor: pointer;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        z-index: 2;
+        transform: translate(-50%, -50%);
+      "
+    />
     <!-- Your p5.js code here -->
     <script>
+      let plate; // The player's plate
+      let cereals = []; // Array to store all the falling cereals
+      let caughtCereals = []; // Array to store caught cereals on the plate
+      let score = 0; // Player's score
+      let missedCereals = 0; // Counter for cereals that have been missed
+
+      <!-- Setup Game -->
       function setup() {
-        createCanvas(400, 400);
-        background(220);
+        createCanvas(480, 480);
+        frameRate(60);
+        plate = new Plate();
+        noLoop();
       }
 
+      <!-- Start Game -->
+      function startGame() {
+        gameState = "running";
+        startButton.style.display = "none"; // Hide the start button
+        loop(); // Start the p5.js draw loop
+      }
+
+      let gameState = "stopped"; // This can be "running" or "stopped"
+
+      <!-- Draw Game -->
       function draw() {
-        ellipse(mouseX, mouseY, 50, 50);
+        // Check game state
+        if (gameState === "stopped") {
+          // Display the start game instruction
+          fill(255);
+          textSize(32);
+          textAlign(CENTER, CENTER);
+          text("Press Start to Begin!", width / 2, height / 2 - 40);
+          return; // Exit the draw function early
+        }
+
+        // If the game is not stopped, then run the game logic
+        background(220);
+        background("#3c3c3c"); // Setting game background
+
+        // Spawning new cereals occasionally
+        if (random() < 0.02) {
+          cereals.push(new Cereal());
+        }
+        // Display and move each cereal
+        for (let i = cereals.length - 1; i >= 0; i--) {
+          cereals[i].show();
+          cereals[i].move();
+
+          if (collided(plate, cereals[i])) {
+            caughtCereals.push(cereals[i]);
+            cereals.splice(i, 1);
+            score++;
+
+            // Award bonus and restart stack when 10 cereals are caught
+            if (caughtCereals.length >= 10) {
+              score += 10; // Increase score by a significant amount, e.g., 50 points
+              caughtCereals = []; // Clear the caughtCereals array to restart the stack
+            }
+          } else if (cereals[i].y > height) {
+            cereals.splice(i, 1); // Remove the missed cereal from the array
+            missedCereals++; // Increment the missed counter
+
+            if (missedCereals >= 10) {
+              // Check if 5 cereals have been missed
+              endGame();
+            }
+          }
+        }
+
+        let cerealWidth = 52;
+        let cerealHeight = 32;
+        let yPos = plate.y - cerealHeight * 0.7; // Start placing cereals from the topmost position of the plate
+
+        for (let i = 0; i < caughtCereals.length; i++) {
+          // For each cereal, adjust the xPos to center it on the plate
+          let xPos = plate.x + plate.width / 2; // Center of the plate
+
+          // If cereal's y position goes beyond the top boundary of the canvas, game ends
+          if (yPos < 0) {
+            endGame();
+            break; // Exit the loop as game has ended
+          }
+
+          textSize(cerealWidth);
+          textAlign(CENTER, CENTER);
+          text(caughtCereals[i].emoji, xPos, yPos);
+
+          yPos -= cerealHeight * 0.7; // Move the y position upwards for the next cereal
+        }
+
+        // Display the plate
+        plate.show();
+
+        // Moving the plate
+        if (keyIsDown(LEFT_ARROW)) {
+          plate.move(-2);
+        }
+        if (keyIsDown(RIGHT_ARROW)) {
+          plate.move(2);
+        }
+
+        // Display score
+        fill(255);
+        textSize(20);
+        text("Score: " + score, 40, 20);
+
+        // Display the missed cereals count on the right top side
+        let missedText = "Missed: " + missedCereals + " / 10";
+        let missedTextWidth = textWidth(missedText);
+        text(missedText, width - missedTextWidth - 10, 20);
+      }
+
+      <!-- Mouse Press to start and restart Game -->
+      function mousePressed() {
+        if (gameState === "stopped") {
+          let startX = width / 2 - textWidth("Press Start to Begin!") / 2;
+          let endX = startX + textWidth("Press Start to Begin!");
+          let startY = height / 2 - 40 - 16; // 32 (textSize) divided by 2
+          let endY = startY + 32; // textSize
+
+          if (
+            mouseX >= startX &&
+            mouseX <= endX &&
+            mouseY >= startY &&
+            mouseY <= endY
+          ) {
+            startGame();
+          }
+        } else {
+          let playAgainStartX = width / 2 - textWidth("Play Again?") / 2;
+          let playAgainEndX = playAgainStartX + textWidth("Play Again?");
+          let playAgainStartY = height / 2 + 40 - 16; // 32 (textSize) divided by 2
+          let playAgainEndY = playAgainStartY + 32; // textSize
+
+          if (
+            mouseX >= playAgainStartX &&
+            mouseX <= playAgainEndX &&
+            mouseY >= playAgainStartY &&
+            mouseY <= playAgainEndY
+          ) {
+            resetGame();
+            startGame();
+          }
+        }
+      }
+
+      function endGame() {
+        fill(255, 0, 0);
+        textSize(32);
+        textAlign(CENTER, CENTER);
+        text("Game Over", width / 2, height / 2);
+        fill(255);
+        text("Play Again?", width / 2, height / 2 + 40);
+        noLoop();
+      }
+
+      function resetGame() {
+        cereals = []; // Clear the cereals array
+        caughtCereals = []; // Clear the caughtCereals array
+        score = 0; // Reset the score
+        missedCereals = 0; // Reset the missed cereals counter
+        plate = new Plate(); // Create a new plate
+      }
+
+      function collided(p, c) {
+        let cerealSize = 32; // Approximate size of the emoji
+        return c.y + cerealSize > p.y && c.x > p.x && c.x < p.x + p.width;
+      }
+
+      class Cereal {
+        constructor() {
+          this.x = random(width);
+          this.y = 0;
+          this.speed = random(1, 4);
+          this.emojiTypes = ["🥞"];
+          this.emoji = random(this.emojiTypes);
+        }
+
+        move() {
+          this.y += this.speed;
+        }
+
+        show() {
+          textSize(32);
+          textAlign(CENTER, CENTER);
+          text(this.emoji, this.x, this.y);
+        }
+      }
+
+      class Plate {
+        constructor() {
+          this.x = width / 2 - 160; // Centering the plate on the screen
+          this.y = height - 50;
+          this.speed = 5;
+          this.width = 130; // Adjusting the width to fit about 10 emojis
+        }
+
+        move(direction) {
+          this.x += this.speed * direction;
+          this.x = constrain(this.x, 0, width - this.width);
+        }
+
+        show() {
+          fill(200); // Some grey color for the plate
+          rect(this.x, this.y, this.width, 10);
+        }
       }
     </script>
   </body>

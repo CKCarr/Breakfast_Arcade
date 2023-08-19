@@ -1,41 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Breakfast For Fun</title>
-    <meta charset="utf-8" />
+    <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <!-- Bootstrap 4 CDN -->
+    <title>Breakfast For Fun</title>
+
+    <!-- Bootstrap 4 CSS -->
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
     />
+
+    <!-- p5.js Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+
+    <!-- Bootstrap 4 JS and its Dependencies -->
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- End Bootstrap 4 CDN -->
 
-    <!-- scripts for index.js -->
+    <!-- Your CSS -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='styles/header.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='styles/common.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='styles/footer.css') }}"
+    />
+
+    <!-- Your JS -->
     <script src="{{ url_for('static', filename='scripts/index.js') }}"></script>
 
-    <!-- links to static/styles/css -->
-    <link rel="stylesheet" type="text/css" href="static/styles/header.css" />
-    <link rel="stylesheet" type="text/css" href="static/styles/common.css" />
-    <link rel="stylesheet" type="text/css" href="static/styles/index.css" />
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
-    <script src="{{ url_for('static', filename='sketch.js') }}"></script>
     <!-- Custom CSS -->
-    <style>
-      .fakeimg {
-        height: 200px;
-        background: #aaa;
-      }
-    </style>
-    <!-- End Custom CSS -->
   </head>
 
   <body>
-    <div class="header-margin"></div>
     <!-- Header Section -->
     <header>
       <h1>Breakfast Bites && Bytes Arcade</h1>
@@ -57,12 +64,6 @@
       <div id="api_status" class="available"></div>
     </header>
     <!-- End Header -->
-
-    <!-- Jumbotron Section -->
-    <div class="jumbotron text-center" style="margin-bottom: 0">
-      <!-- Jumbotron content here -->
-      <p><b>Welcome to a Breakfast Adventure!</b></p>
-    </div>
 
     <!-- Navigation Bar -->
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
@@ -96,41 +97,37 @@
     </nav>
     <!-- End Navigation Bar -->
 
-    <!-- p5.js Canvas -->
-    <div id="game-container">
-      <!-- This is where your p5.js canvas will be created -->
-      <script>
-        function setup() {
-          createCanvas(400, 400);
-          background(220);
-        }
-
-        function draw() {
-          ellipse(mouseX, mouseY, 50, 50);
-        }
-      </script>
-    </div>
-
-    <!-- Game Section -->
-    <section id="games">
-      <!-- Game section content here -->
-      <h2>Choose Your Game</h2>
-      <div id="game-container">
-        <!-- This is where your p5.js canvas will be created -->
+    <!-- Main Section -->
+    <!-- Arcade Content -->
+    <div class="arcade-container">
+      <div class="arcade-demo">
+        <h2>Pancake Stacker</h2>
+        <div class="canvas-container">
+          <div class="game-container">
+            <img
+              src="static/images/screen.png"
+              alt="Game Screen"
+              class="game-screen"
+            />
+            <div class="iframe-container">
+              <iframe
+                src="{{ url_for('arcade.get_game') }}"
+                class="game-iframe"
+              ></iframe>
+            </div>
+          </div>
+        </div>
       </div>
-      <!-- TODO: Add game selection buttons here -->
-    </section>
+    </div>
 
     <!-- Footer Section -->
     <footer>
-      <!-- Footer content here -->
-      <div class="jumbotron text-center" style="margin-bottom: 0">
-        <p>Holberton-School Hacksprint C20</p>
-        <p>Breakfast For Fun 2023</p>
-        <p>&copy; 2023 My Breakfast Website. All rights reserved.</p>
+      <div>
+        <p>Holberton-School Hacksprint C20 Tulsa, Ok</p>
+        <p>&copy; 2023 Breakfast For Fun. All rights reserved.</p>
       </div>
     </footer>
 
-    <!-- Custom scripts (if needed) -->
+    <!-- End Footer Section -->
   </body>
 </html>
