@@ -3,6 +3,7 @@ config/secret-config.json
 docker-compose.yml
 docker-compose.*.yml
 Dockerfile.*
+compose.yaml
 .dockerignore
 .docker/
 .env
