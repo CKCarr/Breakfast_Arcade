@@ -41,25 +41,21 @@
   <body>
     <!-- incorporate status of api in header -->
     <!-- Header Section -->
+    <div class="header-margin"></div>
     <header>
+      <!-- Header content here -->
       <h1>Welcome to the Breakfast Adventure!</h1>
-      <p>This website features breakfast-themed games and recipes.</p>
       <div class="logo"></div>
+      <span style="font-size: 130px">&#x1F95E; </span>
+      <!-- Pancake emoji -->
+      <span style="font-size: 130px">&#x1F373;</span>
+      <!-- Fried egg emoji -->
+      <span style="font-size: 130px">&#129363;</span>
+      <!-- Bacon emoji -->
       <div id="api_status" class="available"></div>
     </header>
     <!-- End Header -->
 
-    <!-- -->
-    <div class="jumbotron text-center" style="margin-bottom: 0">
-      <h1>Breakfast For Fun</h1>
-        <img
-          src="static/images/calum-lewis-8Nc_oQsc2qQ-unsplash(1).jpg"
-          alt="Pancakes"
-          style="width: 160px; height: 380px"
-          target=
-        />
-  
-    </div>
     <!-- Navigation Bar -->
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
       <a class="navbar-brand" href="{{ url_for('home') }}">HOME</a>
@@ -102,7 +98,13 @@
 
           <h2>Breakfast Recipes</h2>
           <h5> Favorite Pancake Recipe </h5>
-          <div class="fakeimg">Fake Image</div>
+          <img
+          src="static/images/calum-lewis-8Nc_oQsc2qQ-unsplash(1).jpg"
+          alt="Pancakes"
+          style="width: 300px; height: 340px; rotate: 360deg"
+          target=
+        />
+          
           <p></p>
 
           <h3>Some Links</h3>
@@ -121,10 +123,8 @@
         </div>
         <!--  Title  -->
         <div class="col-sm-8">
-          <h2>Breakfast Arcade</h2>
-          <h5>Breakfast for Fun</h5>
-          <div class="fakeimg">GAME ARCADE</div>
-          <p>Some text..</p>
+          <h2>History Of Breakfast</h2>
+          <div class="fakeimg">History</div>
           <p>
             Sunt in culpa qui officia deserunt mollit anim id est laborum
             consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
@@ -132,11 +132,13 @@
             exercitation ullamco.
           </p>
           <br />
-          <h2>TITLE HEADING</h2>
-          <h5><b>Breakfast Recipes</b></h5>
+          <h2>Hisory Of Arcades</h2>
           <div class="fakeimg">Fake Image</div>
-          <p></p>
           <p>
+            Sunt in culpa qui officia deserunt mollit anim id est laborum
+            consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+            exercitation ullamco.
           </p>
         </div>
       </div>
