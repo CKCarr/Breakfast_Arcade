@@ -25,14 +25,6 @@
     <!-- Include jQuery library (required for AJAX) -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <!-- Include your JavaScript file -->
-    <script src="/static/scripts/index.js"></script>
-
-    <style>
-      .fakeimg {
-        height: 200px;
-        background: #aaa;
-      }
-    </style>
 
     <!-- End Custom CSS -->
   </head>
@@ -42,7 +34,7 @@
     <div class="header-margin"></div>
     <header>
       <!-- Header content here -->
-      <h1>Welcome to the Breakfast Adventure!</h1>
+      <h1>Welcome to a Breakfast Adventure!</h1>
       <div class="logo"></div>
       <span style="font-size: 130px">&#x1F95E; </span>
       <!-- Pancake emoji -->
@@ -86,7 +78,9 @@
 
     <!-- Recipe Section -->
     <section id="recipes-list">
-      <h1>Breakfast Recipes</h1>
+      <div class="jumbotron text-center" style="margin-bottom: 0">
+        <h1>Breakfast Recipes!</h1>
+      </div>
       <div class="recipe-grid">
         {% for recipe in recipes %}
         <div class="recipe-item">
