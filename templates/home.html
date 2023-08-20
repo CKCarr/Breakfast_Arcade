@@ -22,7 +22,7 @@
     <!-- links to static/styles/css -->
     <link rel="stylesheet" type="text/css" href="/static/styles/header.css" />
     <link rel="stylesheet" type="text/css" href="/static/styles/common.css" />
-    <link rel="stylesheet" type="text/css" href="/static/styles/footer.css" />
+    <link rel="stylesheet" type="text/css" href="/static/styles/index.css" />
 
     <!-- scripts for index.js -->
     <script src="../static/scripts/index.js"></script>
@@ -40,19 +40,24 @@
   <!-- Body -->
   <body>
     <!-- incorporate status of api in header -->
-    <div id="api_status" class="available"></div>
-    <div class="header-margin"></div>
     <!-- Header Section -->
+    <div class="header-margin"></div>
     <header>
-      <h1>Breakfast Bites && Bytes</h1>
-      <p>.Breakfast Recipes && Arcade Breaks.</p>
+      <!-- Header content here -->
+      <h1>Welcome to the Breakfast Adventure!</h1>
       <div class="logo"></div>
-
+      <span style="font-size: 130px">&#x1F95E; </span>
+      <!-- Pancake emoji -->
+      <span style="font-size: 130px">&#x1F373;</span>
+      <!-- Fried egg emoji -->
+      <span style="font-size: 130px">&#129363;</span>
+      <!-- Bacon emoji -->
+      <div id="api_status" class="available"></div>
     </header>
     <!-- End Header -->
 
     <!-- Navigation Bar -->
-    <nav class="navbar navbar-expand-sm bg-dark navbar-dark" id="nav_bar" >
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
       <a class="navbar-brand" href="{{ url_for('home') }}">HOME</a>
       <button
         class="navbar-toggler"
@@ -82,30 +87,34 @@
     </nav>
     <!-- End Navigation Bar -->
 
-    <!--Main Content-->
-    <div class="main-content">
-      <div class="jumbotron text-center" style="margin-bottom: 0">
-        <h1>Welcome to a Breakfast Adventure!</h1>
-    </div>
-
+    <!-- Content-->
     <div class="container" style="margin-top: 30px">
       <div class="row">
         <div class="col-sm-4">
 
           <h2>Breakfast Arcade</h2>
-          <img class="fakeimg" src="{{ url_for('static', filename='images/screen.png') }}" alt="Screen"/>
-          <p>Egg-citing News! Presenting a New Breakfast Arcade game to play! You will flip for this fun!</p>
+          <img
+          src="static/images/screen.png"
+          alt="arca"
+          style="width: 250px; height: 340px;"
+          target=
+        />
+          <p>Egg-citing News! Presenting a New Breakfast Arcade game to play! You will flip for this fun! Play this as you wait for your breakfest to be ready!</p>
 
           <h2>Breakfast Recipes</h2>
-          <h5> Favorite Pancake Recipe </h5>
-          <div class="fakeimg">Fake Image</div>
-          <p></p>
+          <img
+          src="static/images/calum-lewis-8Nc_oQsc2qQ-unsplash(1).jpg"
+          alt="Pancakes"
+          style="width: 250px; height: 340px;"
+          target=
+        />
+          
+          <p>Use the breakfast recipe tab to find recipes that you may like! for example you might find a recipe for pancakes like thsese!</p>
 
           <h3>Some Links</h3>
-          <p>Some Favorite Recipe</p>
           <ul class="nav nav-pills flex-column">
             <li class="nav-item">
-              <a class="nav-link active" href="#">Active</a>
+              <a class="nav-link active" href="#">link</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Link</a>
@@ -117,32 +126,49 @@
         </div>
         <!--  Title  -->
         <div class="col-sm-8">
-          <h2>Breakfast Arcade</h2>
-          <h5>Breakfast for Fun</h5>
-          <div class="fakeimg">GAME ARCADE</div>
-          <p>Some text..</p>
+          <h2>Origin Of Breakfast</h2>
+          <img
+          src="static/images/images.jpg"
+          alt="breakfast2"
+          style="width: 400px; height: 340px;"
+        />
           <p>
-            Sunt in culpa qui officia deserunt mollit anim id est laborum
-            consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-            exercitation ullamco.
-          </p>
+            The origins of breakfast are thought to date back to the ancient world, when people would break their fasts with a simple meal before starting their day. The first known reference to breakfast in English dates back to the 15th century, when it was mentioned in a work by author Thomas Nashe.
+            </p>
           <br />
-          <h2>TITLE HEADING</h2>
-          <h5><b>Breakfast Recipes</b></h5>
-          <div class="fakeimg">Fake Image</div>
-          <p></p>
+          <h2>Breakfast Facts!</h2>
           <p>
+            <strong>Continental vs. English:</strong> The terms "continental breakfast" and "English breakfast" are widely used. A continental breakfast typically includes pastries, fruit, and beverages, while an English breakfast features eggs, bacon, sausages, and other cooked items.
+    </li>
+    <li>
+      <strong>Global Influences:</strong> Breakfast varies significantly across cultures. In Japan, a traditional breakfast may include rice, fish, and miso soup. In India, it might consist of dosa, idli, or paratha with chutney and sambar.
+    </li>
+    <li>
+      <strong>Coffee Love:</strong> Coffee is a breakfast staple for many. In fact, it's estimated that around 2.25 billion cups of coffee are consumed daily worldwide.
+    </li>
+    <li>
+      <strong>Brunch Origin:</strong> The term "brunch" was popularized in the late 19th century by British author Guy Beringer. He proposed a late morning meal to cure hangovers.
+    </li>
+    <li>
+      <strong>Health Impact:</strong> Studies suggest that having a balanced breakfast can have positive effects on metabolism, energy levels, and cognitive function throughout the day.
+    </li>
+    <li>
+      <strong>Breakfast Around the Clock:</strong> With changing work schedules, "breakfast for dinner" or "brinner" has become a trend, where breakfast foods are consumed in the evening.
+    </li>
+    <li>
+      <strong>Cultural Significance:</strong> In some cultures, breakfast holds special cultural and social importance. For example, in Israel, a traditional breakfast known as "Israeli breakfast" often includes a variety of salads, cheeses, and bread.
+    </li>
+    <li>
+      <strong>Innovation:</strong> With the rise of health-conscious consumers, breakfast options have expanded to include more whole grains, plant-based alternatives, and innovative recipes like smoothie bowls and avocado toasts.
+    </li>
           </p>
         </div>
       </div>
     </div>
-    <!-- Footer Section -->
-    <footer>
-      <div>
-        <p>Holberton-School Hacksprint C20 Tulsa, Ok</p>
-        <p>&copy; 2023 Breakfast Arcade. All rights reserved.</p>
-      </div>
-    </footer>
-    <!-- End Footer Section -->
+
+    <div class="jumbotron text-center" style="margin-bottom: 0">
+      <p>Holberton-School Hacksprint C20 Tulsa, Ok</p>
+      <p>&copy; 2023 Breakfast For Fun. All rights reserved.</p>
+    </div>
+  </body>
 </html>
