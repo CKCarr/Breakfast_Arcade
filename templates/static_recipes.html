@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- Head -->
+  <head>
+    <title>Breakfast For Fun</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Bootstrap 4 CDN -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- End Bootstrap 4 CDN -->
+    <!-- Include your own script (index.js) using Flask's url_for -->
+    <script src="{{ url_for('static', filename='scripts/index.js') }}"></script>
+
+    <!-- Custom CSS -->
+    <!-- links to static/styles/css -->
+    <link rel="stylesheet" type="text/css" href="static/styles/header.css" />
+    <link rel="stylesheet" type="text/css" href="static/styles/common.css" />
+    <link rel="stylesheet" type="text/css" href="static/styles/footer.css" />
+
+    <style>
+      .fakeimg {
+        height: 200px;
+        background: #aaa;
+      }
+    </style>
+
+    <!-- End Custom CSS -->
+  </head>
+  <!-- End Head-->
+
+  <!-- Body -->
+  <body>
+    <!-- incorporate status of api in header -->
+    <div class="header-margin"></div>
+    <!-- Header Section -->
+    <header>
+      <h1>Welcome to a Breakfast Adventure!</h1>
+      <div class="logo" id="grad1"></div>
+      <span style="font-size: 130px">&#x1F95E; </span>
+      <!-- Pancake emoji -->
+      <span style="font-size: 130px">&#x1F373;</span>
+      <!-- Fried egg emoji -->
+      <span style="font-size: 130px">&#129363;</span>
+      <!-- Bacon emoji -->
+    </header>
+    <!-- End Header -->
+
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark" id="nav_bar">
+      <a class="navbar-brand" href="{{ url_for('home') }}">HOME</a>
+
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#collapsibleNavbar"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('recipes.get_recipes') }}"
+              >Breakfast Recipes</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('arcade') }}"
+              >Breakfast Arcade</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('contacts') }}">Contacts</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <!-- End Navigation Bar -->
+
+    <!-- Main Content -->
+    <div class="main-content">
+      <div class="jumbotron text-center" style="margin-bottom: 0">
+        <h1>Breakfast Bites && Bytes</h1>
+        <><b> Breakfast Bites Recipes!
+      </div>
+      <!-- Your website's content excluding footer -->
+      <h3>Some Links</h3>
+      <ul class="nav nav-pills flex-column">
+
+        <li class="nav-item">
+          <a class="nav-link" href="https://www.marthastewart.com/868891/breakfast-sausage-puffs">Breakfast Sausage Puffs</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="https://www.thekitchn.com/recipe-muffin-pan-breakfast-sliders-234089">Muffin-Pan Breakfast Sliders</a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" href="https://www.foodrepublic.com/recipes/the-wrangler-breakfast-taco-recipe/"><img src="/static/images/thewranglerbreakfasttaco.webp" alt="Taco Image" width="50" height="50">The Wrangler Breakfast Taco Recipe</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="#">Place Recipe Here</a>
+          </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="#">Place Recipe Here</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="#">Place Recipe Here</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="#">Place Recipe Here</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="#">Place Recipe Here</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="#">Place Recipe Here</a>
+        </li>
+
+        <li class="nav-item">
+        <a class="nav-link" href="#">Place Recipe Here</a>
+        </li>
+
+        <li class="nav-item">
+        <a class="nav-link" href="#">Place Recipe Here</a>
+        </li>
+
+        <li class="nav-item">
+        <a class="nav-link" href="#">Place Recipe Here</a>
+        </li>
+
+        <li class="nav-item">
+        <a class="nav-link" href="#">Place Recipe Here</a>
+        </li>
+
+        <li class="nav-item">
+        <a class="nav-link" href="#">Place Recipe Here</a>
+        </li>
+
+        <hr class="d-sm-none" />
+    </div>
+
+
+
+
+
+
+    <!-- Footer Section -->
+    <footer>
+      <div>
+        <p>Holberton-School Hacksprint C20 Tulsa, Ok</p>
+        <p>&copy; 2023 Breakfast For Fun. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <!-- End Footer Section -->
+  </body>
+</html>

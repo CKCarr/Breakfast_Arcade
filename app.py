@@ -8,6 +8,8 @@ import sys
 import os
 print(sys.path)
 
+port = int(os.environ.get("PORT", 5000))
+host = os.environ.get("HOST", '0.0.0.0')
 load_dotenv()  # Load environment variables from .env file
 
 app = Flask(__name__, static_url_path='/static')
@@ -15,6 +17,7 @@ app = Flask(__name__, static_url_path='/static')
 CORS(app)  # Enable CORS for all routes
 
 app.register_blueprint(arcade_blueprint, url_prefix='/arcade')
+
 app.register_blueprint(recipes_blueprint, url_prefix='/recipes')
 
 # Test environment variables
@@ -42,8 +45,8 @@ def arcade():
 
 @app.route('/recipes', strict_slashes=False)
 def recipes():
-    return render_template('recipes.html')
+    return render_template('static_recipes.html')
 
 
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0', port=5000)
+    app.run(host=host, port=port, debug=False)
